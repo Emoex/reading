@@ -14,3 +14,14 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::resource('/admin/user','admin\UserController');
+Route::resource('/admin/ting','admin\TingController');
+
+
+
+
+
+
+
+
