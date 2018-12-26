@@ -17,6 +17,12 @@ Route::get('/', function () {
 
 
 
+Route::resource('/admin/user','admin\UserController');
+Route::resource('/admin/ting','admin\TingController');
+
+
+
+
 
 
 
@@ -34,3 +40,4 @@ Route::get('/admin/logout','admin\LoginController@Logout');
 Route::resource('/admin/admin','admin\AdminController')->middleware('App\Http\Middleware\CheckLogin::class');
 Route::resource('/admin/cate','admin\CateController');
 Route::resource('/admin/article','admin\ArticleController');
+

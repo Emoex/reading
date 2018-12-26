@@ -28,7 +28,6 @@
 		<div class="main-header">
 			<div class="logo-header">
 				<a href="index.html" class="logo">
-					
 				</a>
 				<button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-controls="sidebar" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
@@ -37,7 +36,8 @@
 			</div>
 			<nav class="navbar navbar-header navbar-expand-lg">
 				<div class="container-fluid">
-				
+
+
 					<ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
 						<li class="nav-item dropdown hidden-caret">
 							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -125,6 +125,7 @@
 									<a class="dropdown-item" href="#"><i class="ti-settings"></i> Account Setting</a>
 									<div class="dropdown-divider"></div>
 									<a class="dropdown-item" href="/admin/logout"><i class="fa fa-power-off"></i>退出</a>
+
 								</ul>
 								<!-- /.dropdown-user -->
 							</li>
@@ -146,6 +147,7 @@
                                                              @elseif(session('admin')->auth==2)普通管理员
                                                              @endif
 									</span>
+
 									<span class="caret"></span>
 								</span>
 							</a>
@@ -188,16 +190,18 @@
 								<ul class="nav">
 									<li>
 										<a href="/admin/admin">
+
 											<i class="la la-reorder"></i>
 											<p>管理员列表</p>
 										</a>
 									</li>
-									<li>
 										<a href="/admin/admin/create">
+
 											<i class="la la-user-plus"></i>
 											<p>管理员添加</p>
 										</a>
 									</li>
+
 								</ul>
 							</div>
 						</div>
@@ -216,23 +220,20 @@
 							<div class="collapse in" id="collapseExample1" aria-expanded="true" style="">
 								<ul class="nav">
 									<li>
-										<a href="index.html">
+
+										<a href="/admin/user">
 											<i class="la la-reorder"></i>
 											<p>用戶列表</p>
 										</a>
 									</li>
 									<li>
-										<a href="index.html">
+
+										<a href="/admin/user/create">
 											<i class="la la-plus-circle"></i>
 											<p>用戶添加</p>
 										</a>
 									</li>
-									<li>
-										<a href="index.html">
-											<i class="la la-wrench"></i>
-											<p>用戶修改</p>
-										</a>
-									</li>
+
 								</ul>
 							</div>
 						</div>
@@ -270,29 +271,25 @@
 							<a class="" data-toggle="collapse" href="#collapseExample3" aria-expanded="true">
 								<span>
 									
+
 									<i class="la la-book"></i><span class="user-level">文章管理</span>
 									<span class="caret"></span>
 								</span>
 							</a>
 							<div class="clearfix"></div>
 							<div class="collapse in" id="collapseExample3" aria-expanded="true" style="">
+
 								<ul class="nav">
 									<li>
-										<a href="index.html">
+										<a href="/admin/article">
 											<i class="la la-reorder"></i>
 											<p>文章列表</p>
 										</a>
 									</li>
 									<li>
-										<a href="index.html">
+										<a href="/admin/article/create">
 											<i class="la la-plus-circle"></i>
 											<p>文章添加</p>
-										</a>
-									</li>
-									<li>
-										<a href="index.html">
-											<i class="la la-wrench"></i>
-											<p>文章修改</p>
 										</a>
 									</li>
 								</ul>
@@ -301,7 +298,7 @@
 						</li>
 						<li class="nav-item active">
 						 <div class="info">
-							<a class="" data-toggle="collapse" href="#collapseExample3" aria-expanded="true">
+							<a class="" data-toggle="collapse" href="#collapseExample4" aria-expanded="true">
 								<span>
 									
 									<i class="la la-music"></i><span class="user-level">电台管理</span>
@@ -310,24 +307,19 @@
 							</a>
 							<div class="clearfix"></div>
 
+
 							<div class="collapse in" id="collapseExample4" aria-expanded="true" style="">
 								<ul class="nav">
 									<li>
-										<a href="index.html">
+										<a href="/admin/ting">
 											<i class="la la-reorder"></i>
-											<p>文章列表</p>
+											<p>电台列表</p>
 										</a>
 									</li>
 									<li>
-										<a href="index.html">
+										<a href="/admin/ting/create">
 											<i class="la la-plus-circle"></i>
-											<p>文章添加</p>
-										</a>
-									</li>
-									<li>
-										<a href="index.html">
-											<i class="la la-wrench"></i>
-											<p>文章修改</p>
+											<p>电台添加</p>
 										</a>
 									</li>
 								</ul>
