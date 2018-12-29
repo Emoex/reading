@@ -30,7 +30,7 @@
 					<td>{{$v->id}}</td>
 					<td>{{$v->uname}}</td>
 					<td>{{$v->sex}}</td>
-					<td><img src='{{$v->face}}' style="width:100px;height:100px;border-radius: 10px;" /></td>
+					<td><img src="{{$v->face}}" style="width:100px;height:100px;border-radius: 10px;" /></td>
 					<td>{{$v->tel}}</td>
 					<td>{{$v->email}}</td>
 					<td>
