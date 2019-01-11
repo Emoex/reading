@@ -22,6 +22,7 @@
 	<script src="/assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
 	<script src="/assets/js/ready.min.js"></script>
 	<script src="/assets/js/demo.js"></script>
+	<script type="text/javascript" src='/js/minigrid.js'></script>
 </head>
 <body>
 	<div class="wrapper">
@@ -177,7 +178,7 @@
 					<ul class="nav">
 					    <li class="nav-item active">
 						 <div class="info">
-							<a class="" data-toggle="collapse" href="#collapseExample6" aria-expanded="true">
+							<a class="" data-toggle="collapse" href="#collapseExample0" aria-expanded="true">
 								<span>
 									
 									<i class="la la-user"></i><span class="user-level"> 管&nbsp理&nbsp员</span>
@@ -186,7 +187,7 @@
 							</a>
 							<div class="clearfix"></div>
 
-							<div class="collapse in" id="collapseExample6" aria-expanded="true" style="">
+							<div class="collapse in" id="collapseExample0" aria-expanded="true" style="">
 								<ul class="nav">
 									<li>
 										<a href="/admin/admin">
@@ -410,13 +411,13 @@
 							<div class="collapse in" id="collapseExample6" aria-expanded="true" style="">
 								<ul class="nav">
 									<li>
-										<a href="index.html">
+										<a href="/admin/blogroll">
 											<i class="la la-reorder"></i>
 											<p>友情链接列表</p>
 										</a>
 									</li>
 									<li>
-										<a href="index.html">
+										<a href="/admin/blogroll/create">
 											<i class="la la-plus-circle"></i>
 											<p>友情链接添加</p>
 										</a>

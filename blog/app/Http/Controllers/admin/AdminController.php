@@ -72,7 +72,7 @@ class AdminController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**
@@ -106,9 +106,9 @@ class AdminController extends Controller
         }
         $res = $admin->save();
         if($res){
-            // if(session('admin')->id == $admin->id){
-            //     session(['admin',$admin]);
-            // }
+            if(session('admin')['id'] == $admin->id){
+                session(['admin'=>$admin]);
+            }
             return redirect('/admin/admin')->with('success','修改成功');
         }else{
             return back()->with('error','修改失败');

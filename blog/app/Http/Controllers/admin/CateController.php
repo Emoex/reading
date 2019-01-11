@@ -31,13 +31,7 @@ class CateController extends Controller
         $cate = $request->input('cate','1');
         $params['name'] = $name;
         $params['cate'] = $cate;
-        if($cate == 1){
-            $obj = new ArticleCate;
-        }else if($cate == 2) {
-            $obj = new TimelineCate;
-        }else if($cate == 3){
-            $obj = new TingCate;
-        }
+        $obj = self::getObj($cate);
         $data = $obj->where('name','like','%'.$name.'%')->paginate(5);
         return view('admin/cate/index',['title'=>'分类列表','params'=>$params,'data'=>$data]);
     }
@@ -61,13 +55,7 @@ class CateController extends Controller
     public function store(Request $request)
     {
         $cate = $request->cate;
-        if($cate == 1){
-            $obj = new ArticleCate;
-        }else if($cate == 2) {
-            $obj = new TimelineCate;
-        }else if($cate == 3){
-            $obj = new TingCate;
-        }
+        $obj = self::getObj($cate);
         $obj->name = $request->name;
         if($request->hasFile('path')){
             $obj->path = '/uploads/'.$request->file('path')->store('images');
@@ -102,6 +90,7 @@ class CateController extends Controller
         $cate = $request->cate;
         $obj = self::getObj($cate);
         $data = $obj->find($id);
+        $data->cate = $cate;
         return view('admin/cate/edit',['title'=>'分类修改','data'=>$data]);
     }
 
@@ -136,13 +125,7 @@ class CateController extends Controller
     public function destroy(Request $request,$id)
     {
         $cate = $request->cate;
-        if($cate == '1'){
-            $obj = new ArticleCate;
-        }else if($cate == '2') {
-            $obj = new TimelineCate;
-        }else if($cate == '3'){
-            $obj = new TingCate;
-        }
+        $obj = self::getObj($cate);
         $one = $obj->find($id);
         if($one->face){
         $res = Storage::delete(ltrim($one->face,'/uploads/'));

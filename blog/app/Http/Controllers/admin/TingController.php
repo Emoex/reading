@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Ting;
 use App\Http\Requests\TingStore;
 use DB;
+use App\Models\TingCate;
+use App\Models\User;
 
 class TingController extends Controller
 {
@@ -17,6 +19,7 @@ class TingController extends Controller
      */
     public function index(Request $request)
     {
+
         $req=$request->all();
         $condition=[];
         if(!empty($req['content'])){
@@ -33,7 +36,9 @@ class TingController extends Controller
      */
     public function create()
     {
-        return view('/admin/ting/create',['title'=>'添加电台']);
+        $cate=TingCate::all();
+        $user=User::all();
+        return view('/admin/ting/create',['title'=>'添加电台','cate'=>$cate,'user'=>$user]);
     }
 
     /**
@@ -44,9 +49,12 @@ class TingController extends Controller
      */
     public function store(TingStore $request)
     {
+
         $reqs=$request->except(['_token']);
+        
         DB::beginTransaction();
         $ting=new Ting;
+
         $ting->title=$reqs['title'];
         $ting->tname=$reqs['tname'];
         if($request->hasFile('img')){
@@ -57,7 +65,12 @@ class TingController extends Controller
             $music = $request->file('music')->store('music');
             $ting->music='/uploads/'.$music;
         }
+        $ting->cid=$reqs['tingcate'];
+
         $res=$ting->save();
+        
+        //dd(TingCate::where('name',$aa)->first());
+
         if($res){
             DB::commit();  //提交事务
             return redirect('/admin/ting')->with('success','添加成功');
@@ -75,7 +88,7 @@ class TingController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**
@@ -86,9 +99,9 @@ class TingController extends Controller
      */
     public function edit($id)
     {
-
+        $cate=TingCate::all();
         $data=Ting::find($id);
-        return view('/admin/ting/edit',['title'=>'修改电台','data'=>$data]);
+        return view('/admin/ting/edit',['title'=>'修改电台','data'=>$data,'cate'=>$cate]);
         /*
         
         ///
@@ -120,12 +133,13 @@ class TingController extends Controller
         //
         DB::beginTransaction();
         $data=$request->except(['_token']);
-        dd($data);
         $ting=Ting::find($id);
         $ting->title=$data['title'];
-        $ting->tname=$data['tname'];
-        $ting->img=$data['img'];
-        $ting->tingcate=$data['tingcate'];
+         if($request->hasFile('img')){
+            $path = $request->file('img')->store('images');
+            $ting->img='/uploads/'.$path;
+        }
+        $ting->cid=$data['tingcate'];
         $res=$ting->save();
         if($res){
             DB::commit();  //提交事务

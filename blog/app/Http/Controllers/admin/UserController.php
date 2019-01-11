@@ -47,8 +47,7 @@ class UserController extends Controller
     public function store(UserStore $request)
     {
         
-        //开启事务
-        DB::beginTransaction();
+
 
         $user=new User;
 
@@ -68,10 +67,8 @@ class UserController extends Controller
         $res1=$userinfo->save();
 
         if($res && $res1){
-            DB::commit();  //提交事务
             return redirect('/admin/user')->with('success','添加成功');
         }else{
-            DB::rollBack();
             return redirect('error','添加失败');
         }
 
@@ -109,21 +106,20 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        DB::beginTransaction();
         $data=$request->except(['_token']);
-        ///dd($data);
         $user=User::find($id);
         $user->sex=$data['sex'];
-        $user->face=$data['face'];
         $user->tel=$data['tel'];
         $user->email=$data['email'];
+        if($request->hasFile('face')){
+            $path = $request->file('face')->store('images');
+            $user->face='/uploads/'.$path;
+        }
         $res=$user->save();
-
+ 
         if($res){
-            DB::commit();  //提交事务
             return redirect('/admin/user')->with('success','修改成功');
         }else{
-            DB::rollBack();
             return redirect('error','修改失败');
         }
         

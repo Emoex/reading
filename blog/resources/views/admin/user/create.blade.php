@@ -13,13 +13,6 @@
  <form action="/admin/user" method="post" enctype="multipart/form-data">
 
                                        {{ csrf_field() }}
-									   <div class="form-group">
-												<label for="exampleFormControlSelect1">权限:</label>
-												<select class="form-control" id="exampleFormControlSelect1" name="auth">
-													<option value="1">超级管理员</option>
-													<option value="2">普通管理员</option>
-												</select>
-										</div>
 										<div class="form-group">
 											<label for="uname">用户名:</label>
 											<input type="uname" class="form-control" id="uname" value="{{ old('uname') }}" name="uname" placeholder="用户名">
